@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "1",
+    "title": "Bohemian Rhapsody",
+    "artist": "Queen",
+    "album": "A Night at the Opera",
+    "releaseYear": 1975
+  },
+  {
+    "_id": "2",
+    "title": "Shape of You",
+    "artist": "Ed Sheeran",
+    "album": "÷",
+    "releaseYear": 2017
+  },
+  {
+    "_id": "3",
+    "title": "Shape of My Heart",
+    "artist": "Sting",
+    "album": "Ten Summoner's Tales",
+    "releaseYear": 1993
+  },
+  {
+    "_id": "4",
+    "title": "Bad Guy",
+    "artist": "Billie Eilish",
+    "album": "When We All Fall Asleep",
+    "releaseYear": 2019
+  },
+  {
+    "_id": "5",
+    "title": "Happier Than Ever",
+    "artist": "Billie Eilish",
+    "album": "Happier Than Ever",
+    "releaseYear": 2021
+  },
+  {
+    "_id": "6",
+    "title": "Smells Like Teen Spirit",
+    "artist": "Nirvana",
+    "album": "Nevermind",
+    "releaseYear": 1991
+  },
+  {
+    "_id": "7",
+    "title": "Wonderwall",
+    "artist": "Oasis",
+    "album": "(What's the Story) Morning Glory?",
+    "releaseYear": 1995
+  }
+]
