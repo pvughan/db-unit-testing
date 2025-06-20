@@ -1,4 +1,16 @@
-import ...
+import javax.inject.Inject;
+import com.mongodb.client.MongoClient;
+import com.lordofthejars.nosqlunit.mongodb.MongoDbRule;
+import com.lordofthejars.nosqlunit.mongodb.ManagedMongoDbRule;
+import com.lordofthejars.nosqlunit.mongodb.ManagedMongoDb;
+import com.lordofthejars.nosqlunit.core.LoadStrategyEnum;
+import com.lordofthejars.nosqlunit.annotation.UsingDataSet;
+import com.lordofthejars.nosqlunit.annotation.ShouldMatchDataSet;
+import org.junit.ClassRule;
+import org.junit.Rule;
+import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 @UsingDataSet(locations = "/dataset/initialSongs.json",
         loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
 public class findAllSongs {

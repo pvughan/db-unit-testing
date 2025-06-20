@@ -1,5 +1,17 @@
-import ...
-public class createASong {
+import com.lordofthejars.nosqlunit.mongodb.MongoDbRule;
+import com.lordofthejars.nosqlunit.mongodb.ManagedMongoDb;
+import com.lordofthejars.nosqlunit.mongodb.ManagedMongoDbRuleBuilder;
+import com.lordofthejars.nosqlunit.core.LoadStrategyEnum;
+import com.lordofthejars.nosqlunit.annotation.UsingDataSet;
+import com.lordofthejars.nosqlunit.annotation.ShouldMatchDataSet;
+import org.example.music.model.SongRepository;
+import org.example.music.model.Song;
+import org.example.music.util.MongoDbUtil;
+import org.junit.ClassRule;
+import org.junit.Rule;
+import org.junit.Test;
+
+public class addASong {
     // nếu muốn chạy một MongoDB in‐memory hoặc managed mongod cục bộ:
     @ClassRule
     public static ManagedMongoDb managedMongod = ManagedMongoDbRuleBuilder
