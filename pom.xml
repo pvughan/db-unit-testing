@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="
-           http://maven.apache.org/POM/4.0.0
-           http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yourcompany</groupId>
     <artifactId>DBTestingUnit</artifactId>
@@ -14,34 +12,34 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mongodb.driver.version>4.9.0</mongodb.driver.version>
+
+        <!-- Phiên bản tương thích NoSQLUnit 0.8.0 -->
+        <nosqlunit.version>0.8.0</nosqlunit.version>
+        <!-- Driver 3.x để NoSQLUnit tìm được WriteConcern.SAFE -->
+        <mongo.driver.legacy>3.12.10</mongo.driver.legacy>
         <junit.version>4.13.2</junit.version>
-        <slf4j.version>1.7.36</slf4j.version>
-        <logback.version>1.4.14</logback.version>
-        <faker.version>1.0.2</faker.version>
-        <spring-boot.version>3.2.5</spring-boot.version>
     </properties>
 
     <dependencies>
-        <!-- NoSQLUnit for MongoDB -->
+        <!-- MongoDB Java Driver 3.x (có WriteConcern.SAFE) -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>${mongo.driver.legacy}</version>
+        </dependency>
+
+        <!-- NoSQLUnit core & MongoDB module -->
         <dependency>
             <groupId>com.lordofthejars</groupId>
             <artifactId>nosqlunit-core</artifactId>
-            <version>0.8.0</version>
+            <version>${nosqlunit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.lordofthejars</groupId>
             <artifactId>nosqlunit-mongodb</artifactId>
-            <version>0.8.0</version>
+            <version>${nosqlunit.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- MongoDB Java Driver -->
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-sync</artifactId>
-            <version>${mongodb.driver.version}</version>
         </dependency>
 
         <!-- JUnit 4 -->
@@ -52,46 +50,18 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- SLF4J + Logback -->
+        <!-- SLF4J simple (để NoSQLUnit in log) -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Java Faker for data generation -->
-        <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>${faker.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Spring Boot Starter Data MongoDB -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            <version>${spring-boot.version}</version>
-        </dependency>
-
-        <!-- Spring Boot Starter Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Compiler Plugin -->
+            <!-- Compiler Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -101,14 +71,15 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire để chạy test -->
+            <!-- Surefire để chạy JUnit4 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M9</version>
                 <configuration>
-                    <forkCount>1</forkCount>
-                    <reuseForks>true</reuseForks>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>
