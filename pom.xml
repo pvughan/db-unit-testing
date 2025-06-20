@@ -28,6 +28,12 @@
             <version>${mongo.driver.legacy}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.9.0</version>
+        </dependency>
+
         <!-- NoSQLUnit core & MongoDB module -->
         <dependency>
             <groupId>com.lordofthejars</groupId>

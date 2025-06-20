@@ -1,4 +1,4 @@
-package org.example.music;
+package model;
 
 public class Song {
 
