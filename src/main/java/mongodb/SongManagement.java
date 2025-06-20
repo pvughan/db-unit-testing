@@ -22,8 +22,8 @@ public class SongManagement {
     /**
      * Constructor mặc định sẽ lấy collection "songs" từ MongoDbUtil.
      */
-    public SongManagement() {
-        this.songs = MongoDbUtil.getCollection("songs");
+    public SongManagement(MongoCollection<Document> collection) {
+        this.songs = collection;
     }
 
     /** Lấy tất cả Song trong collection */

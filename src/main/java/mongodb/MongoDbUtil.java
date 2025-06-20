@@ -10,7 +10,7 @@ import org.bson.Document;
 public class MongoDbUtil {
 
     private static final String URI = "mongodb://localhost:27017";
-    private static final String DB_NAME = "testdb";
+    private static final String DB_NAME = "test";
     private static final MongoClient CLIENT = MongoClients.create(URI);
     private static final MongoDatabase DATABASE = CLIENT.getDatabase(DB_NAME);
 
