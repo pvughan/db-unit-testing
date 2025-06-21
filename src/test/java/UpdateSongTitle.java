@@ -43,7 +43,7 @@ public class UpdateSongTitle {
 
     @Test
     @UsingDataSet(
-            locations = "/initialSongs.json",
+            locations = "/song.json",
             loadStrategy = LoadStrategyEnum.CLEAN_INSERT
     )
     @ShouldMatchDataSet(
@@ -52,7 +52,7 @@ public class UpdateSongTitle {
     public void updateTitleOfASong() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
 
-        // ID phải trùng với trong initialSongs.json
+        // ID phải trùng với trong song.json
         String idToUpdate = "666a1f2e95c62162b8d1e001";
         songManager.updateASong(idToUpdate, "Hey Jude", "The Beatles");
     }

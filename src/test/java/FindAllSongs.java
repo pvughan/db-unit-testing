@@ -2,7 +2,6 @@ import com.lordofthejars.nosqlunit.mongodb.MongoDbRule;
 import com.lordofthejars.nosqlunit.mongodb.ManagedMongoDb;
 import com.lordofthejars.nosqlunit.core.LoadStrategyEnum;
 import com.lordofthejars.nosqlunit.annotation.UsingDataSet;
-import com.lordofthejars.nosqlunit.annotation.ShouldMatchDataSet;
 
 import org.junit.ClassRule;
 import org.junit.Rule;
@@ -47,7 +46,7 @@ public class FindAllSongs {
 
     @Test
     @UsingDataSet(
-            locations = "/initialSongs.json",
+            locations = "/song.json",
             loadStrategy = LoadStrategyEnum.CLEAN_INSERT
     )
     public void shouldFindAllSongs() {

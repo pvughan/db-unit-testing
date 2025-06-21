@@ -58,6 +58,17 @@ public class SongManagement {
         return result;
     }
 
+    /** Tìm các Song có artist khớp chính xác */
+    public List<Song> findByArtist(String artist) {
+        return songs
+                .find(Filters.eq("artist", artist))
+                .map(doc -> new Song(
+                        doc.getString("title"),
+                        doc.getString("artist")
+                ))
+                .into(new ArrayList<>());
+    }
+
     /** Cập nhật title và artist của Song theo id */
     public void updateASong(String id, String newTitle, String newArtist) {
         songs.updateOne(

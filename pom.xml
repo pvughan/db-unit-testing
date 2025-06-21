@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver</artifactId>
-            <version>3.12.10</version> <!-- Hoặc phiên bản bạn cần -->
+            <version>3.12.10</version>
         </dependency>
 
         <!-- JUnit 4 -->

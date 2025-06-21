@@ -44,13 +44,13 @@ public class FindSongByIndex {
 
     @Test
     @UsingDataSet(
-            locations = "/initialSongs.json",
+            locations = "/song.json",
             loadStrategy = LoadStrategyEnum.CLEAN_INSERT
     )
     public void findSongById() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
 
-        String targetId = "666a1f2e95c62162b8d1e001";  // ID phải giống với initialSongs.json
+        String targetId = "666a1f2e95c62162b8d1e001";  // ID phải giống với song.json
         Song result = songManager.findById(targetId);
 
         assertNotNull(result);

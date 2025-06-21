@@ -8,7 +8,7 @@
     {
       "_id": {"$oid": "666a1f2e95c62162b8d1e001"},
       "title": "Let It Be",
-      "artist": "Obama"
+      "artist": "The Beatles"
     }
   ]
 }

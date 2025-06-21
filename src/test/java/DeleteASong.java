@@ -4,7 +4,6 @@ import com.lordofthejars.nosqlunit.core.LoadStrategyEnum;
 import com.lordofthejars.nosqlunit.annotation.UsingDataSet;
 import com.lordofthejars.nosqlunit.annotation.ShouldMatchDataSet;
 
-import org.bson.Document;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
@@ -44,7 +43,7 @@ public class DeleteASong {
 
     @Test
     @UsingDataSet(
-            locations = "/initialSongs.json",
+            locations = "/song.json",
             loadStrategy = LoadStrategyEnum.CLEAN_INSERT
     )
     @ShouldMatchDataSet(
@@ -53,7 +52,7 @@ public class DeleteASong {
     public void deleteASongById() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
 
-        // ID này phải khớp với _id trong initialSongs.json
+        // ID này phải khớp với _id trong song.json
         String idToDelete = "64b8f0d2a3c1f24e5bc12345";
         songManager.deleteById(idToDelete);
     }

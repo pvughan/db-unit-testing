@@ -45,7 +45,7 @@ public class AddASong {
 
     @Test
     @UsingDataSet(
-            locations = { "/initialSongs.json" },
+            locations = "/song.json",
             loadStrategy = LoadStrategyEnum.CLEAN_INSERT
     )
     @ShouldMatchDataSet(
@@ -53,9 +53,7 @@ public class AddASong {
     )
     public void createANewSong() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
-        Song s1 = new Song("Let It Be", "The Beatles");
         Song s2 = new Song("Billie Jean", "Michael Jackson");
-        songManager.save(s1);
         songManager.save(s2);
     }
 }
