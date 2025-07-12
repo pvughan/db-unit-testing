@@ -38,7 +38,8 @@ public class SongManagement {
     public Song save(Song song) {
         Document doc = new Document()
                 .append("title", song.getTitle())
-                .append("artist", song.getArtist());
+                .append("artist", song.getArtist())
+                .append("year", song.getYear());
         songs.insertOne(doc);
         song.setId(doc.getObjectId("_id").toHexString());
         return song;
@@ -58,13 +59,30 @@ public class SongManagement {
         return result;
     }
 
-    /** Cập nhật title và artist của Song theo id */
-    public void updateASong(String id, String newTitle, String newArtist) {
+    /** Tìm các Song có artist khớp chính xác */
+    public List<Song> findByArtist(String artist) {
+        List<Song> result = new ArrayList<>();
+        songs.find(Filters.eq("artist", artist))
+                .forEach((Consumer<Document>) doc -> result.add(documentToSong(doc)));
+        return result;
+    }
+
+    /** Tìm các Song có year khớp chính xác */
+    public List<Song> findByYear(int year) {
+        List<Song> result = new ArrayList<>();
+        songs.find(Filters.eq("year", year))
+                .forEach((Consumer<Document>) doc -> result.add(documentToSong(doc)));
+        return result;
+    }
+
+    /** Cập nhật title, artist và year của Song theo id */
+    public void updateASong(String id, String newTitle, String newArtist, int newYear) {
         songs.updateOne(
                 Filters.eq("_id", new ObjectId(id)),
                 Updates.combine(
                         Updates.set("title", newTitle),
-                        Updates.set("artist", newArtist)
+                        Updates.set("artist", newArtist),
+                        Updates.set("year", newYear)
                 )
         );
     }

@@ -3,15 +3,18 @@
     {
       "_id": {"$oid": "64b8f0d2a3c1f24e5bc12345"},
       "title": "Imagine",
-      "artist": "John Lennon"
+      "artist": "John Lennon",
+      "year": 1988
     },
     {
       "title": "Let It Be",
-      "artist": "The Beatles"
+      "artist": "The Beatles",
+      "year": 1970
     },
     {
       "title": "Billie Jean",
-      "artist": "Michael Jackson"
+      "artist": "Michael Jackson",
+      "year": 1982
     }
   ]
 }

@@ -53,8 +53,8 @@ public class AddASong {
     )
     public void createANewSong() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
-        Song s1 = new Song("Let It Be", "The Beatles");
-        Song s2 = new Song("Billie Jean", "Michael Jackson");
+        Song s1 = new Song("Let It Be", "The Beatles", 1970);
+        Song s2 = new Song("Billie Jean", "Michael Jackson", 1982);
         songManager.save(s1);
         songManager.save(s2);
     }

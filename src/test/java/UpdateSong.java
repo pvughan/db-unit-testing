@@ -2,8 +2,8 @@ import com.lordofthejars.nosqlunit.mongodb.MongoDbRule;
 import com.lordofthejars.nosqlunit.mongodb.ManagedMongoDb;
 import com.lordofthejars.nosqlunit.core.LoadStrategyEnum;
 import com.lordofthejars.nosqlunit.annotation.UsingDataSet;
+import com.lordofthejars.nosqlunit.annotation.ShouldMatchDataSet;
 
-import model.Song;
 import mongodb.SongManagement;
 import mongodb.MongoDbUtil;
 
@@ -13,13 +13,10 @@ import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
-import java.util.List;
-
 import static com.lordofthejars.nosqlunit.mongodb.ManagedMongoDb.MongoServerRuleBuilder.newManagedMongoDbRule;
 import static com.lordofthejars.nosqlunit.mongodb.MongoDbRule.MongoDbRuleBuilder.newMongoDbRule;
-import static org.junit.Assert.*;
 
-public class FindSongByArtist {
+public class UpdateSong {
 
     @ClassRule
     public static ManagedMongoDb managedMongod = newManagedMongoDbRule()
@@ -49,13 +46,14 @@ public class FindSongByArtist {
             locations = "/initialSongs.json",
             loadStrategy = LoadStrategyEnum.CLEAN_INSERT
     )
-    public void findSongsByArtist() {
+    @ShouldMatchDataSet(
+            location = "/expectedSongsAfterUpdate.json"
+    )
+    public void updateASong() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
-        List<Song> result = songManager.findByArtist("The Beatles");
 
-        assertEquals(1, result.size()); // Ví dụ: The Beatles có 1 bài trong initialSongs.json
-        for (Song song : result) {
-            assertEquals("The Beatles", song.getArtist());
-        }
+        // ID phải trùng với trong initialSongs.json
+        String idToUpdate = "64b8f0d2a3c1f24e5bc12345";
+        songManager.updateASong(idToUpdate, "Hey Jude", "The Beatles", 2022);
     }
 }

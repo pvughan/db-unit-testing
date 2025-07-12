@@ -17,7 +17,7 @@ import static com.lordofthejars.nosqlunit.mongodb.ManagedMongoDb.MongoServerRule
 import static com.lordofthejars.nosqlunit.mongodb.MongoDbRule.MongoDbRuleBuilder.newMongoDbRule;
 import static org.junit.Assert.*;
 
-public class FindSongByIndex {
+public class FindSongByID {
 
     @ClassRule
     public static ManagedMongoDb managedMongod = newManagedMongoDbRule()
@@ -50,11 +50,11 @@ public class FindSongByIndex {
     public void findSongById() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
 
-        String targetId = "666a1f2e95c62162b8d1e001";  // ID phải giống với initialSongs.json
+        String targetId = "64b8f0d2a3c1f24e5bc12345";  // ID phải giống với initialSongs.json
         Song result = songManager.findById(targetId);
 
         assertNotNull(result);
-        assertEquals("Let It Be", result.getTitle());
+        assertEquals("Imagine", result.getTitle());
         assertEquals("Obama", result.getArtist());
     }
 }

@@ -19,7 +19,7 @@ import static com.lordofthejars.nosqlunit.mongodb.ManagedMongoDb.MongoServerRule
 import static com.lordofthejars.nosqlunit.mongodb.MongoDbRule.MongoDbRuleBuilder.newMongoDbRule;
 import static org.junit.Assert.*;
 
-public class FindSongByArtist {
+public class FindSongByYear {
 
     @ClassRule
     public static ManagedMongoDb managedMongod = newManagedMongoDbRule()
@@ -49,13 +49,10 @@ public class FindSongByArtist {
             locations = "/initialSongs.json",
             loadStrategy = LoadStrategyEnum.CLEAN_INSERT
     )
-    public void findSongsByArtist() {
+    public void findSongsByYear() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
-        List<Song> result = songManager.findByArtist("The Beatles");
+        List<Song> result = songManager.findByYear(1970);
 
-        assertEquals(1, result.size()); // Ví dụ: The Beatles có 1 bài trong initialSongs.json
-        for (Song song : result) {
-            assertEquals("The Beatles", song.getArtist());
-        }
+        assertEquals(1, result.size()); // Ví dụ: chỉ có 1 bài năm 1970
     }
 }

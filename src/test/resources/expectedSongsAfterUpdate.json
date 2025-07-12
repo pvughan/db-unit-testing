@@ -2,13 +2,14 @@
   "song": [
     {
       "_id": {"$oid": "64b8f0d2a3c1f24e5bc12345"},
-      "title": "Imagine",
-      "artist": "John Lennon"
+      "title": "Hey Jude",
+      "artist": "The Beatles",
+      "year": 2022
     },
     {
-      "_id": {"$oid": "666a1f2e95c62162b8d1e001"},
-      "title": "Hey Jude",
-      "artist": "The Beatles"
+      "title": "Let It Be",
+      "artist": "The Beatles",
+      "year": 1970
     }
   ]
 }
