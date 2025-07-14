@@ -53,7 +53,7 @@ public class UpdateSong {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
 
         // ID phải trùng với trong initialSongs.json
-        String idToUpdate = "64b8f0d2a3c1f24e5bc12345";
+        String idToUpdate = "64b8f0d2a3c1f24e5bc12346";
         songManager.updateASong(idToUpdate, "Hey Jude", "The Beatles", 2022);
     }
 }

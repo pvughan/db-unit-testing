@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class MongoSchemaTest {
+public class DatabaseSchemaTesting {
 
     private static MongoClient mongoClient;
     private static MongoDatabase database;

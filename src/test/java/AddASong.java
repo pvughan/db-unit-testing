@@ -25,7 +25,6 @@ public class AddASong {
             .appendSingleCommandLineArguments("-vvv")
             .build();
 
-    // rule mặc định sẽ xóa sạch db "testdb" trước mỗi @Test
     @Rule
     public MongoDbRule remoteMongoDbRule = newMongoDbRule()
             .defaultManagedMongoDb("test");

@@ -15,7 +15,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 
-public class SongValidationTest {
+public class ValidationSchemaTesting {
 
     private Validator validator;
 

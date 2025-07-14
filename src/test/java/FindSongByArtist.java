@@ -51,11 +51,11 @@ public class FindSongByArtist {
     )
     public void findSongsByArtist() {
         SongManagement songManager = new SongManagement(MongoDbUtil.getCollection("song"));
-        List<Song> result = songManager.findByArtist("The Beatles");
+        List<Song> result = songManager.findByArtist("John Lennon");
 
         assertEquals(1, result.size()); // Ví dụ: The Beatles có 1 bài trong initialSongs.json
         for (Song song : result) {
-            assertEquals("The Beatles", song.getArtist());
+            assertEquals("John Lennon", song.getArtist());
         }
     }
 }
